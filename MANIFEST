@@ -1,6 +1,7 @@
 .githooksrc
 .perlcriticrc
 .travis.yml
+README.md
 lib/App/GitHooks/Plugin/NotifyReleasesToSlack.pm
 xt/changes.t
 xt/kwalitee.t
