@@ -5,7 +5,7 @@ App-GitHooks-Plugin-NotifyReleasesToSlack
 [![Coverage Status](https://coveralls.io/repos/guillaumeaubert/App-GitHooks-Plugin-NotifyReleasesToSlack/badge.svg?branch=master)](https://coveralls.io/r/guillaumeaubert/App-GitHooks-Plugin-NotifyReleasesToSlack?branch=master)
 [![CPAN](https://img.shields.io/cpan/v/App-GitHooks-Plugin-NotifyReleasesToSlack.svg)](https://metacpan.org/release/App-GitHooks-Plugin-NotifyReleasesToSlack)
 
-App::GitHooks plugin to notify Slack channel of new releases pushed from a repository.
+App::GitHooks plugin to notify Slack channels of new releases pushed from a repository.
 
 
 INSTALLATION

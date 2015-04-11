@@ -24,7 +24,7 @@ use App::GitHooks::Constants qw( :PLUGIN_RETURN_CODES );
 
 =head1 NAME
 
-App::GitHooks::Plugin::NotifyReleasesToSlack - Notify Slack channel of new releases pushed from a repository.
+App::GitHooks::Plugin::NotifyReleasesToSlack - Notify Slack channels of new releases pushed from a repository.
 
 
 =head1 DESCRIPTION
