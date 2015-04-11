@@ -58,11 +58,12 @@ Code to execute as part of the pre-push hook.
 
 sub run_pre_push
 {
-	$log->info( 'Entering NotifyReleasesToSlack.' );
 	my ( $class, %args ) = @_;
 	my $app = delete( $args{'app'} );
 	my $stdin = delete( $args{'stdin'} );
 	my $config = $app->get_config();
+
+	$log->info( 'Entering NotifyReleasesToSlack.' );
 
 	# Verify that the mandatory config options are present.
 	my $config_return = verify_config( $config );
