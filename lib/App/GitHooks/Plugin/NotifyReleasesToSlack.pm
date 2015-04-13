@@ -115,6 +115,7 @@ C<slack_post_url> config option.
 
 	slack_post_url = https://hooks.slack.com/services/.../.../...
 
+
 =head2 slack_channels
 
 The comma-separated list of channels to send release notifications to.
@@ -154,6 +155,11 @@ Arguments:
 =item * $app I<(mandatory)>
 
 An C<App::GitHooks> object.
+
+=item * $stdin I<(mandatory)>
+
+The content provided by git on stdin, corresponding to a list of references
+being pushed.
 
 =back
 
