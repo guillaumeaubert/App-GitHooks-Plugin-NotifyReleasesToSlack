@@ -1,5 +1,5 @@
 ---
-abstract: 'Notify Slack channel of new releases pushed from a repository.'
+abstract: 'Notify Slack channels of new releases pushed from a repository.'
 author:
   - 'Guillaume Aubert <aubertg@cpan.org>'
 build_requires:
