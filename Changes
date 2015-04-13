@@ -1,4 +1,9 @@
 Revision history for App-GitHooks-Plugin-NotifyReleasesToSlack
 
+v1.0.1  2015-04-13
+        - Fix post requests to Slack.
+        - Improve error reporting when Slack's webhook service cannot be
+          reached.
+
 v1.0.0  2015-04-12
         - Public release.
