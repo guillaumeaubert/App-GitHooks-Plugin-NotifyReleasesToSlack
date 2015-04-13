@@ -389,15 +389,19 @@ sub notify_slack
 		# If the connection is down, or Slack is down, warn the user.
 		if ( !$response->is_success() )
 		{
-			$log->errorf(
-				"Failed to notify channel '%s' with message '%s': %s %s.",
+			my $error = sprintf(
+				"Failed to notify channel '%s' with message '%s'.\n>>> %s %s.",
 				$channel,
 				$message,
 				$response->code(),
 				$response->message(),
 			);
 
-			print STDERR "Failed to notify channel '$channel' with message '$message'.\n";
+			# Notify any logging systems.
+			$log->error( $error );
+
+			# Notify the user who is pushing tags.
+			print STDERR "$error\n";
 		}
 	}
 
