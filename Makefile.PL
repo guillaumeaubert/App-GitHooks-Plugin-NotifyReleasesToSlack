@@ -15,16 +15,12 @@ WriteMakefile
                    'Try::Tiny' => 0,
                    'App::GitHooks' => 0,
                    'Test::Git' => 0,
-                   'Test::Exception' => 0,
-                   'Capture::Tiny' => 0,
                    'Test::FailWarnings' => 0,
                    'Data::Dumper' => 0,
                    'Log::Any' => 0,
                    'Test::More' => '0.94',
                    'LWP::UserAgent' => 0,
-                   'Git::Repository' => 0,
                    'CPAN::Changes' => 0,
-                   'Test::Type' => 0,
                    'JSON' => 0
                  }
 )

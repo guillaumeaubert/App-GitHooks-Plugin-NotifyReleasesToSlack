@@ -41,13 +41,9 @@ my $builder = $class->new(
 	dist_version_from    => 'lib/App/GitHooks/Plugin/NotifyReleasesToSlack.pm',
 	build_requires       =>
 	{
-		'Capture::Tiny'        => 0,
-		'Git::Repository'      => 0,
-		'Test::Exception'      => 0,
-		'Test::FailWarnings'   => 0,
+	  'Test::FailWarnings'   => 0,
 		'Test::Git'            => 0,
 		'Test::More'           => 0.94,
-		'Test::Type'           => 0,
 	},
 	requires             =>
 	{
