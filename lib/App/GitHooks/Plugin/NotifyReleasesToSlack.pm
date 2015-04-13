@@ -369,8 +369,7 @@ sub notify_slack
 
 		# Prepare payload for the request.
 		my $request_payload =
-			'payload='
-			. JSON::encode_json(
+			JSON::encode_json(
 				{
 					text     => $message,
 					channel  => $channel,
