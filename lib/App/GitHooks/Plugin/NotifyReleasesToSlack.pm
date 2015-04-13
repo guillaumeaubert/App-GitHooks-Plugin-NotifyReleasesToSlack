@@ -142,7 +142,20 @@ your repository:
 
 Code to execute as part of the pre-push hook.
 
-  my $plugin_return_code = App::GitHooks::Plugin::NotifyReleasesToSlack->run_pre_push();
+  my $plugin_return_code = App::GitHooks::Plugin::NotifyReleasesToSlack->run_pre_push(
+		app   => $app,
+		stdin => $stdin,
+	);
+
+Arguments:
+
+=over 4
+
+=item * $app I<(mandatory)>
+
+An C<App::GitHooks> object.
+
+=back
 
 =cut
 
@@ -215,9 +228,21 @@ sub run_pre_push
 
 =head2 verify_config()
 
-#TODO
+Verify that the mandatory options are defined in the current githooksrc config.
 
-	my $plugin_return_code = verify_config( $config );
+	my $plugin_return_code = App::GitHooks::Plugin::NotifyReleasesToSlack::verify_config(
+		$config
+	);
+
+Arguments:
+
+=over 4
+
+=item * $config I<(mandatory)>
+
+An C<App::GitHooks::Config> object.
+
+=back
 
 =cut
 
@@ -255,9 +280,21 @@ sub verify_config
 
 =head2 get_remote_name()
 
-#TODO
+Get the name of the repository.
 
-	my $remote_name = get_remote_name( $app );
+	my $remote_name = App::GitHooks::Plugin::NotifyReleasesToSlack::get_remote_name(
+		$app
+	);
+
+Arguments:
+
+=over 4
+
+=item * $app I<(mandatory)>
+
+An C<App::GitHooks> object.
+
+=back
 
 =cut
 
@@ -282,12 +319,26 @@ sub get_remote_name
 
 =head2 notify_slack()
 
-#TODO
+Display a notification in the Slack channels defined in the config file.
 
-	notify_slack(
+	App::GitHooks::Plugin::NotifyReleasesToSlack::notify_slack(
 		$app,
 		$message,
 	);
+
+Arguments:
+
+=over 4
+
+=item * $app I<(mandatory)>
+
+An C<App::GitHooks> object.
+
+=item * $message I<(mandatory)>
+
+The message to display in Slack channels.
+
+=back
 
 =cut
 
@@ -351,9 +402,21 @@ sub notify_slack
 
 =head2 get_changelog_releases()
 
-#TODO
+Retrieve a hashref of all the releases in the changelog file.
 
-	my $releases = get_changelog_releases( $app );
+	my $releases = App::GitHooks::Plugin::NotifyReleasesToSlack::get_changelog_releases(
+		$app
+	);
+
+Arguments:
+
+=over 4
+
+=item * $app I<(mandatory)>
+
+An C<App::GitHooks> object.
+
+=back
 
 =cut
 
@@ -396,12 +459,27 @@ sub get_changelog_releases
 
 =head2 get_pushed_tags()
 
-#TODO
+Retrieve a list of the tags being pushed with C<git push>.
 
-	my @tags = get_pushed_tags(
+	my @tags = App::GitHooks::Plugin::NotifyReleasesToSlack::get_pushed_tags(
 		$app,
 		$stdin,
 	);
+
+Arguments:
+
+=over 4
+
+=item * $app I<(mandatory)>
+
+An C<App::GitHooks> object.
+
+=item * $stdin I<(mandatory)>
+
+The content provided by git on stdin, corresponding to a list of references
+being pushed.
+
+=back
 
 =cut
 
