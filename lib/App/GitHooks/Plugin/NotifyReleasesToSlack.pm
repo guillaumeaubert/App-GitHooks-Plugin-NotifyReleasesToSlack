@@ -29,8 +29,62 @@ App::GitHooks::Plugin::NotifyReleasesToSlack - Notify Slack channels of new rele
 
 =head1 DESCRIPTION
 
-#TODO
+If you maintain a changelog file, and tag your release commits, you can use
+this plugin to send the release notes to Slack channels.
 
+Here is a practical scenario:
+
+=over 4
+
+=item 1.
+
+Install C<App::GitHooks::Plugin::NotifyReleasesToSlack>.
+
+=item 2.
+
+Set up an incoming webhook in Slack. This should give you a URL to post
+messages to, with a format similar to
+C<https://hooks.slack.com/services/.../.../...>.
+
+=item 3.
+
+Configure the plugin in your C<.githooksrc> file:
+
+	[NotifyReleasesToSlack]
+	slack_post_url = ...
+	slack_channels = #releases, #test
+	changelog_path = Changes
+
+=item 4.
+
+Add release notes in your changelog file:
+
+	v1.0.0  2015-04-12
+	        - Added first feature.
+	        - Added second feature.
+
+=item 5.
+
+Commit your release notes:
+
+	git commit Changelog -m 'Release version 1.0.0.'
+
+=item 6.
+
+Tag your release:
+
+	git tag v1.0.0
+	git push origin v1.0.0
+
+=item 7.
+
+Watch the notification appear in the corresponding Slack channel(s):
+
+	release-notes BOT: @channel - Release v1.0.0 of test_repo:
+	- Added first feature.
+	- Added second feature.
+
+=back
 
 =head1 VERSION
 
@@ -43,7 +97,43 @@ our $VERSION = '1.0.0';
 
 =head1 CONFIGURATION OPTIONS
 
-#TODO
+This plugin supports the following options in the C<[NotifyReleasesToSlack]>
+section of your C<.githooksrc> file.
+
+	[NotifyReleasesToSlack]
+	slack_post_url = https://hooks.slack.com/services/.../.../...
+	slack_channels = #releases, #test
+	changelog_path = Changes
+
+
+=head2 slack_post_url
+
+After you set up a new incoming webhook in Slack, check under "Integration
+settings" for the following information: "Webhook URL", "Send your JSON
+payloads to this URL". This is the URL you need to set as the value for the
+C<slack_post_url> config option.
+
+	slack_post_url = https://hooks.slack.com/services/.../.../...
+
+=head2 slack_channels
+
+The comma-separated list of channels to send release notifications to.
+
+	slack_channels = #releases, #test
+
+Don't forget to prefix the channel names with '#'. It may still work without
+it, but some keywords are reserved by Slack and you may see inconsistent
+behaviors between channels.
+
+
+=head2 changelog_path
+
+The path to the changelog file, relative to the root of the repository.
+
+For example, if the changelog file is named C<Changes> and lives at the root of
+your repository:
+
+	changelog_path = Changes
 
 
 =head1 METHODS
@@ -52,7 +142,7 @@ our $VERSION = '1.0.0';
 
 Code to execute as part of the pre-push hook.
 
-  my $success = App::GitHooks::Plugin::NotifyReleasesToSlack->run_pre_push();
+  my $plugin_return_code = App::GitHooks::Plugin::NotifyReleasesToSlack->run_pre_push();
 
 =cut
 
