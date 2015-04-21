@@ -218,7 +218,7 @@ sub run_pre_push
 		notify_slack(
 			$app,
 			sprintf(
-				"\@channel - Release %s of %s:\n%s",
+				"Release %s of %s:\n%s",
 				$tag,
 				$remote_name,
 				$serialized_notes,
