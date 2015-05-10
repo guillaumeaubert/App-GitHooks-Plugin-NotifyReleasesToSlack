@@ -523,7 +523,7 @@ sub get_pushed_tags
 =head1 BUGS
 
 Please report any bugs or feature requests through the web interface at
-L<https://github.com/guillaumeaubert/App-GitHooks-Plugin-RequireTicketID/issues/new>.
+L<https://github.com/guillaumeaubert/App-GitHooks-Plugin-NotifyReleasesToSlack/issues/new>.
 I will be notified, and then you'll automatically be notified of progress on
 your bug as I make changes.
 
@@ -541,19 +541,19 @@ You can also look for information at:
 
 =item * GitHub's request tracker
 
-L<https://github.com/guillaumeaubert/App-GitHooks-Plugin-RequireTicketID/issues>
+L<https://github.com/guillaumeaubert/App-GitHooks-Plugin-NotifyReleasesToSlack/issues>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/app-githooks-plugin-requireticketid>
+L<http://annocpan.org/dist/app-githooks-plugin-notifyreleasestoslack>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/app-githooks-plugin-requireticketid>
+L<http://cpanratings.perl.org/d/app-githooks-plugin-notifyreleasestoslack>
 
 =item * MetaCPAN
 
-L<https://metacpan.org/release/App-GitHooks-Plugin-RequireTicketID>
+L<https://metacpan.org/release/App-GitHooks-Plugin-NotifyReleasesToSlack>
 
 =back
 
