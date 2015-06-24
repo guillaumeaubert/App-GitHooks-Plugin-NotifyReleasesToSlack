@@ -241,7 +241,7 @@ sub run_pre_push
 			sprintf(
 				"*%sRelease %s of %s:*\n%s",
 				$notify_everyone
-					? '<!everyone>'
+					? '<!everyone> - '
 					: '',
 				$tag,
 				$remote_name,
