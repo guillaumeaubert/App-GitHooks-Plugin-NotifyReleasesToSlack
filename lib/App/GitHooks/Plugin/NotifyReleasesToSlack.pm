@@ -104,6 +104,7 @@ section of your C<.githooksrc> file.
 	slack_post_url = https://hooks.slack.com/services/.../.../...
 	slack_channels = #releases, #test
 	changelog_path = Changes
+	notify_everyone = true
 
 
 =head2 slack_post_url
@@ -135,6 +136,19 @@ For example, if the changelog file is named C<Changes> and lives at the root of
 your repository:
 
 	changelog_path = Changes
+
+
+=head2 notify_everyone
+
+Whether @everyone in the Slack channel(s) should be notified or not. C<true> by
+default, but can be set to C<false> to simply announce releases in the channel
+without notification.
+
+	# Notify @everyone in the channel.
+	notify_everyone = true
+
+	# Just announce in the channel.
+	notify_everyone = false
 
 
 =head1 METHODS
@@ -196,6 +210,13 @@ sub run_pre_push
 	my $remote_name = get_remote_name( $app );
 	$log->infof( "The repository's remote name is %s.", $remote_name );
 
+	# Determine if we should just announce releases in a normal message, or
+	# notify everyone in each channel.
+	my $notify_everyone = $config->get( 'NotifyReleasesToSlack', 'notify_everyone' );
+	$notify_everyone = defined( $notify_everyone ) && ( $notify_everyone eq 'false' )
+		? 0
+		: 1;
+
 	# Analyze tags.
 	foreach my $tag ( @tags )
 	{
@@ -218,7 +239,10 @@ sub run_pre_push
 		notify_slack(
 			$app,
 			sprintf(
-				"*Release %s of %s:*\n%s",
+				"*%sRelease %s of %s:*\n%s",
+				$notify_everyone
+					? '<!everyone>'
+					: '',
 				$tag,
 				$remote_name,
 				$serialized_notes,
@@ -278,6 +302,15 @@ sub verify_config
 	{
 		$log->info( "'changelog_path' is not defined in the [NotifyReleasesToSlack] section of your .githooksrc config." );
 		return $PLUGIN_RETURN_SKIPPED;
+	}
+
+	# If notify_everyone is set, make sure the value is valid.
+	my $notify_everyone = $config->get( 'NotifyReleasesToSlack', 'notify_everyone' );
+	if ( defined( $notify_everyone ) && ( $notify_everyone !~ /(?:true|false)/ ) )
+	{
+		my $error = "'notify_everyone' is defined in [NotifyReleasesToSlack] but the value is not valid";
+		$log->error( "$error." );
+		die "$error\n";
 	}
 
 	return undef;
