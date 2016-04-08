@@ -14,7 +14,7 @@ WriteMakefile
   'PREREQ_PM' => {
                    'Try::Tiny' => 0,
                    'App::GitHooks' => 0,
-                   'Test::Git' => 0,
+                   'Test::Requires::Git' => 1.005,
                    'Test::FailWarnings' => 0,
                    'Data::Dumper' => 0,
                    'Log::Any' => 0,
