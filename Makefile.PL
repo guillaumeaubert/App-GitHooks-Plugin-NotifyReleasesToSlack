@@ -3,25 +3,25 @@ require 5.010;
 use ExtUtils::MakeMaker;
 WriteMakefile
 (
-  'EXE_FILES' => [],
-  'NAME' => 'App::GitHooks::Plugin::NotifyReleasesToSlack',
+  'VERSION_FROM' => 'lib/App/GitHooks/Plugin/NotifyReleasesToSlack.pm',
+  'PREREQ_PM' => {
+                   'Data::Dumper' => 0,
+                   'Log::Any' => 0,
+                   'Try::Tiny' => 0,
+                   'Test::FailWarnings' => 0,
+                   'Test::Requires::Git' => '1.005',
+                   'JSON' => 0,
+                   'App::GitHooks' => 0,
+                   'Test::More' => '0.94',
+                   'CPAN::Changes' => 0,
+                   'LWP::UserAgent' => 0
+                 },
   'test' => {
               'TESTS' => 't/*.t'
             },
-  'VERSION_FROM' => 'lib/App/GitHooks/Plugin/NotifyReleasesToSlack.pm',
   'PL_FILES' => {},
-  'INSTALLDIRS' => 'site',
-  'PREREQ_PM' => {
-                   'JSON' => 0,
-                   'App::GitHooks' => 0,
-                   'Data::Dumper' => 0,
-                   'CPAN::Changes' => 0,
-                   'LWP::UserAgent' => 0,
-                   'Test::More' => '0.94',
-                   'Test::FailWarnings' => 0,
-                   'Test::Requires::Git' => '1.005',
-                   'Try::Tiny' => 0,
-                   'Log::Any' => 0
-                 }
+  'EXE_FILES' => [],
+  'NAME' => 'App::GitHooks::Plugin::NotifyReleasesToSlack',
+  'INSTALLDIRS' => 'site'
 )
 ;
